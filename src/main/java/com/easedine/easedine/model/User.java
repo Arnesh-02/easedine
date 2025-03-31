@@ -11,13 +11,13 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class User {
-    String userId;
-    String name;
-    String category;
-    String phoneNo;
-    String address;
-    String email;
-    String gender;
-    Date dob;
+    private String userId;
+    private String name;
+    private String category;
+    private String phoneNo;
+    private String address;
+    private String email;
+    private String gender;
+    private Date dob;
 
 }
