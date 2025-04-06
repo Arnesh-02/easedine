@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.io.IOException;
 import java.util.List;
 
-@RestController
+@RestController("/user")
 public class UserController {
 
     @Autowired
@@ -31,33 +31,25 @@ public class UserController {
         return userv.login(email, pass);
     }
 
-//    @PutMapping("/{id}/password")
-//    public String forgetPassword(@PathVariable int id, @RequestParam String email) {
-//        return userv.forgetPassword(id, email);
-//    }
+    @PutMapping("/password")
+    public String forgetPassword(@RequestParam String email,@RequestParam String password) {
+        return userv.forgetPassword(email,password);
+    }
 
     @GetMapping("/{id}")
-    public User getUserById(@PathVariable int id) {
+    public User getUserById(@PathVariable String id) {
         return userv.displayUser(id);
     }
 
-//    @PutMapping("/{id}/edit")
-//    public  User updateDetails(@PathVariable int id ,@RequestBody User us){
-//        return  userv.updateProfile(id,us);
-//    }
-//
+    @PutMapping("/{id}/edit")
+    public  User updateDetails(@PathVariable String id ,@RequestBody User us){
+        return  userv.updateProfile(id,us);
+    }
+
     @DeleteMapping("/{id}/deleteAcc")
-    public  String deleteUser(@PathVariable int id){
+    public  String deleteUser(@PathVariable String id){
         return  userv.deleteUser(id);
     }
 
-//    @GetMapping("/{id}/pastorders")
-//    public List<Order> getOrders(@PathVariable int id){
-//        return userv.getOrders(id);
-//    }
-//
-//    @PostMapping("/{id}/review")
-//    public String submitReview(@PathVariable int id,@RequestParam int resId,@RequestParam int rating,@RequestParam String comment) {
-//        return userv.submitReview(id, resId, rating, comment);
-//    }
+
 }

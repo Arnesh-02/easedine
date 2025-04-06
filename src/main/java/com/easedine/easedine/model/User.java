@@ -4,10 +4,7 @@ package com.easedine.easedine.model;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 
 @Entity
@@ -19,9 +16,20 @@ public class User {
 
     private String name;
     private String email;
+    private  String phone;
     private String address;
     private String category;
     private String password;
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+
 
     public String getName() {
         return name;
