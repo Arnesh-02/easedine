@@ -1,8 +1,7 @@
 package com.easedine.easedine.model;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDateTime;
@@ -11,29 +10,35 @@ import java.time.LocalDateTime;
 @Entity
 public class Review {
     @Id
-    private int rId;
-    private int starRating;
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private String rId;
+    private float starRating;
     private  String comment;
     private LocalDateTime createdAt;
 
     // Relationship with other table
 
-    private String cId;
-    private String resId;
+    @ManyToOne
+    @JoinColumn(name = "userId" ,nullable = false)
+    private User userId;
 
-    public int getrId() {
+    @ManyToOne
+    @JoinColumn(name = "resId",nullable = false)
+    private Restaurant resId;
+
+    public String getrId() {
         return rId;
     }
 
-    public void setrId(int rId) {
+    public void setrId(String rId) {
         this.rId = rId;
     }
 
-    public int getStarRating() {
+    public float getStarRating() {
         return starRating;
     }
 
-    public void setStarRating(int starRating) {
+    public void setStarRating(float starRating) {
         this.starRating = starRating;
     }
 
@@ -53,19 +58,19 @@ public class Review {
         this.createdAt = createdAt;
     }
 
-    public String getcId() {
-        return cId;
+    public User getUserId() {
+        return userId;
     }
 
-    public void setcId(String cId) {
-        this.cId = cId;
+    public void setUserId(User userId) {
+        this.userId = userId;
     }
 
-    public String getResId() {
+    public Restaurant getResId() {
         return resId;
     }
 
-    public void setResId(String resId) {
+    public void setResId(Restaurant resId) {
         this.resId = resId;
     }
 }

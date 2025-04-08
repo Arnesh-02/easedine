@@ -10,16 +10,12 @@ import org.springframework.web.bind.annotation.*;
 import java.io.IOException;
 import java.util.List;
 
-@RestController("/user")
+@RestController
+@RequestMapping("/user")
 public class UserController {
 
     @Autowired
     UserService userv;
-
-    @GetMapping("/")
-    public void redirect(HttpServletResponse rp) throws IOException {
-        rp.sendRedirect("/swagger-ui.html");
-    }
 
     @PostMapping("/register")
     public String registerUser(@RequestBody User us) {

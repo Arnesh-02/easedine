@@ -1,6 +1,7 @@
 package com.easedine.easedine.service;
 
 
+import com.easedine.easedine.model.FoodItem;
 import com.easedine.easedine.model.Restaurant;
 import com.easedine.easedine.model.User;
 import com.easedine.easedine.repository.RestaurantRepo;
@@ -41,8 +42,8 @@ public class RestaurantService {
         Optional<Restaurant> res=resRepo.findById(id);
         if(res.isPresent()){
             Restaurant updatedRes=res.get();
-            updatedRes.setDesc(updated.getDesc());
             updatedRes.setPno(updated.getPno());
+            updatedRes.setDescription((updated.getDescription()));
             updatedRes.setCuisines(updated.getCuisines());
             updatedRes.setAddress(updated.getAddress());
             updatedRes.setOpeningHours(updated.getOpeningHours());
