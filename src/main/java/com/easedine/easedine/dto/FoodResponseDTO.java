@@ -1,32 +1,23 @@
-package com.easedine.easedine.model;
+package com.easedine.easedine.dto;
 
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import jakarta.persistence.*;
 import lombok.Data;
-import lombok.Generated;
+import lombok.Getter;
+import lombok.Setter;
 
-@Entity
 @Data
-@Table(name = "FoodItem")
-public class FoodItem {
-    @Id
+@Getter
+@Setter
+public class FoodResponseDTO {
     private String id;
-
     private String name;
-
-    @Column(length = 1000)
     private String description;
-
-    @Column(length = 1000)
-    private String imgUrl;
     private double price;
-    private float starRating=0.0f;
+    private float starRating;
     private String category;
+    private String imgUrl;
+    private String restaurantName;
 
-    @ManyToOne
-    @JoinColumn(name = "resId")
-    private Restaurant restaurant;
 
     public String getId() {
         return id;
@@ -34,14 +25,6 @@ public class FoodItem {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public Restaurant getRestaurant() {
-        return restaurant;
-    }
-
-    public void setRestaurant(Restaurant restaurant) {
-        this.restaurant = restaurant;
     }
 
     public String getName() {
@@ -90,5 +73,13 @@ public class FoodItem {
 
     public void setImgUrl(String imgUrl) {
         this.imgUrl = imgUrl;
+    }
+
+    public String getRestaurantName() {
+        return restaurantName;
+    }
+
+    public void setRestaurantName(String restaurantName) {
+        this.restaurantName = restaurantName;
     }
 }
