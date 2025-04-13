@@ -6,7 +6,23 @@ import lombok.Data;
 @Data
 public class OrderItemDTO {
     private String itemId;
-    private String name;
     private Integer quantity;
-    private Double price;
+
+    public String getItemId() {
+        return itemId;
+    }
+
+    public void setItemId(String itemId) {
+        this.itemId = itemId;
+    }
+
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
+
 }

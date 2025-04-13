@@ -1,9 +1,7 @@
 package com.easedine.easedine.service;
 
 
-import com.easedine.easedine.model.FoodItem;
 import com.easedine.easedine.model.Restaurant;
-import com.easedine.easedine.model.User;
 import com.easedine.easedine.repository.RestaurantRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
