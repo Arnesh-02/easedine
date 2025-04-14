@@ -13,13 +13,31 @@ import lombok.Data;
 public class User {
     @Id
     private String userId;
-
+    private  String userName;
     private String name;
     private String email;
     private  String phone;
     private String address;
     private String category;
     private String password;
+
+    private  Roles role;
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public Roles getRole() {
+        return role;
+    }
+
+    public void setRole(Roles role) {
+        this.role = role;
+    }
 
     public String getPhone() {
         return phone;

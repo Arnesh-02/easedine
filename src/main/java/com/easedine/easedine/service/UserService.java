@@ -13,27 +13,6 @@ public class UserService {
     @Autowired
     UserRepo urepo;
 
-    public String register(User user) {
-        if (urepo.existsByEmail(user.getEmail())) {
-            return "User already exists";
-        }
-        urepo.save(user);
-        return "Successfully Registered";
-    }
-
-    public User login(String email, String password) {
-        Optional<User> optionalUser = urepo.findByEmail(email);
-        if (optionalUser.isPresent()) {
-            User user = optionalUser.get();
-            if (user.getPassword().equals(password)) {
-                return user;
-            } else {
-                throw new RuntimeException("Incorrect password");
-            }
-        } else {
-            throw new RuntimeException("User not found with email: " + email);
-        }
-    }
 
     public User displayUser(String id) {
         Optional<User> userOpt = urepo.findById(id);
@@ -71,6 +50,7 @@ public class UserService {
             User user = userOpt.get();
             user.setName(updatedUser.getName());
             user.setPhone(updatedUser.getPhone());
+            user.setUserName(updatedUser.getUserName());
             user.setAddress(updatedUser.getAddress());
             user.setEmail(updatedUser.getEmail());
             user.setCategory(updatedUser.getCategory());

@@ -1,14 +1,11 @@
 package com.easedine.easedine.controller;
 
+import com.easedine.easedine.auth.AuthService;
+import com.easedine.easedine.exceptions.UserNameNotFoundException;
 import com.easedine.easedine.model.User;
 import com.easedine.easedine.service.UserService;
-import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.annotation.Order;
 import org.springframework.web.bind.annotation.*;
-
-import java.io.IOException;
-import java.util.List;
 
 @RestController
 @RequestMapping("/user")
@@ -17,14 +14,17 @@ public class UserController {
     @Autowired
     UserService userv;
 
+    @Autowired
+    AuthService authService;
+
     @PostMapping("/register")
     public String registerUser(@RequestBody User us) {
-        return userv.register(us);
+        return authService.register(us);
     }
 
     @PostMapping("/login")
-    public User login(@RequestParam String email, @RequestParam String pass) {
-        return userv.login(email, pass);
+    public String login(@RequestParam String email, @RequestParam String pass) throws UserNameNotFoundException {
+        return authService.login(email, pass);
     }
 
     @PutMapping("/password")
