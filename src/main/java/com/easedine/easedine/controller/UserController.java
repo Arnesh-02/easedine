@@ -14,19 +14,6 @@ public class UserController {
     @Autowired
     UserService userv;
 
-    @Autowired
-    AuthService authService;
-
-    @PostMapping("/register")
-    public String registerUser(@RequestBody User us) {
-        return authService.register(us);
-    }
-
-    @PostMapping("/login")
-    public String login(@RequestParam String email, @RequestParam String pass) throws UserNameNotFoundException {
-        return authService.login(email, pass);
-    }
-
     @PutMapping("/password")
     public String forgetPassword(@RequestParam String email,@RequestParam String password) {
         return userv.forgetPassword(email,password);
