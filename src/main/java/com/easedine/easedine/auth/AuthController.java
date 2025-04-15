@@ -1,6 +1,8 @@
 package com.easedine.easedine.auth;
 
 
+import com.easedine.easedine.dto.LoginRequestDTO;
+import com.easedine.easedine.dto.RegisterRequestDTO;
 import com.easedine.easedine.exceptions.UserNameNotFoundException;
 import com.easedine.easedine.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,12 +22,12 @@ public class AuthController {
     private AuthService authService;
 
     @PostMapping("/register")
-    public ResponseEntity<String> register(@RequestBody User user) {
-        return ResponseEntity.ok(authService.register(user));
+    public ResponseEntity<String> register(@RequestBody RegisterRequestDTO requestDTO) {
+        return ResponseEntity.ok(authService.register(requestDTO));
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody Map<String, String> credentials) throws UserNameNotFoundException {
-        return ResponseEntity.ok(authService.login(credentials.get("username"), credentials.get("password")));
+    public ResponseEntity<String> login(@RequestBody LoginRequestDTO loginRequestDTO) throws UserNameNotFoundException {
+        return ResponseEntity.ok(authService.login(loginRequestDTO.getUserName(), loginRequestDTO.getPassword()));
     }
 }
