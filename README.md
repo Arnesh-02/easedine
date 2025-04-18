@@ -10,7 +10,7 @@ EaseDine is a RESTful food delivery backend application built using Spring Boot,
 - JWT (JSON Web Token)
 - Lombok
 - JPA & Hibernate
-- MySQL
+- PostgreSQL 
 - Swagger (Springdoc OpenAPI)
 
 ---
