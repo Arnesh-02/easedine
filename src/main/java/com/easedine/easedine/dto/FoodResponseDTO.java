@@ -9,7 +9,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class FoodResponseDTO {
-    private String id;
+    private int foodItemId;
     private String name;
     private String description;
     private double price;
@@ -19,12 +19,12 @@ public class FoodResponseDTO {
     private String restaurantName;
 
 
-    public String getId() {
-        return id;
+    public int getFoodItemId() {
+        return foodItemId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setFoodItemId(int foodItemId) {
+        this.foodItemId = foodItemId;
     }
 
     public String getName() {

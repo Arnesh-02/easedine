@@ -5,15 +5,15 @@ import lombok.Data;
 
 @Data
 public class OrderItemDTO {
-    private String itemId;
+    private int foodItemId;
     private Integer quantity;
 
-    public String getItemId() {
-        return itemId;
+    public int getFoodItemId() {
+        return foodItemId;
     }
 
-    public void setItemId(String itemId) {
-        this.itemId = itemId;
+    public void setFoodItemId(int foodItemId) {
+        this.foodItemId = foodItemId;
     }
 
 

@@ -16,7 +16,8 @@ import java.util.*;
 @NoArgsConstructor
 public class Restaurant {
     @Id
-    private String resId;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int restaurantId;
 
     private String rname;
     private  String address;
@@ -34,12 +35,12 @@ public class Restaurant {
     @OneToMany(mappedBy = "restaurant", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<FoodItem> foodItems = new ArrayList<>();
 
-    public String getResId() {
-        return resId;
+    public int getRestaurantId() {
+        return restaurantId;
     }
 
-    public void setResId(String resId) {
-        this.resId = resId;
+    public void setRestaurantId(int restaurantId) {
+        this.restaurantId = restaurantId;
     }
 
     public String getRname() {

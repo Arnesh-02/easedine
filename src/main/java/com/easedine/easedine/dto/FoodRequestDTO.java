@@ -14,7 +14,7 @@ public class FoodRequestDTO {
         private String description;
         private double price;
         private String category;
-        private String restaurantId;
+        private int restaurantId;
         private MultipartFile image;
 
 
@@ -50,11 +50,11 @@ public class FoodRequestDTO {
                 this.category = category;
         }
 
-        public String getRestaurantId() {
+        public int getRestaurantId() {
                 return restaurantId;
         }
 
-        public void setRestaurantId(String restaurantId) {
+        public void setRestaurantId(int restaurantId) {
                 this.restaurantId = restaurantId;
         }
 

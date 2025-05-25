@@ -29,7 +29,7 @@ public class FoodItemController {
                                        @RequestParam("description") String description,
                                        @RequestParam("price") double price,
                                        @RequestParam("category") String category,
-                                       @RequestParam("restaurantId") String restaurantId, @RequestPart("image")MultipartFile image) throws IOException {
+                                       @RequestParam("restaurantId") int restaurantId, @RequestPart("image")MultipartFile image) throws IOException {
         FoodRequestDTO dto=new FoodRequestDTO();
         dto.setName(name);
         dto.setDescription(description);
@@ -41,7 +41,7 @@ public class FoodItemController {
     }
 
     @GetMapping("/{id}")
-    public FoodResponseDTO getFoodItemById(@PathVariable String id){
+    public FoodResponseDTO getFoodItemById(@PathVariable int id){
         return fdServ.getFoodItemById(id);
     }
 
@@ -52,13 +52,13 @@ public class FoodItemController {
 
 
     @GetMapping("/{resId}/all")
-    public List<FoodResponseDTO> getAllFoodItemByRestaurant(@PathVariable String resId){
+    public List<FoodResponseDTO> getAllFoodItemByRestaurant(@PathVariable int resId){
         return fdServ.getFoodItemsByRestaurant(resId);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteFoodById(String foodId){
-        return  fdServ.deleteFoodItem(foodId);
+    public ResponseEntity<String> deleteFoodById(@PathVariable int id){
+        return  fdServ.deleteFoodItem(id);
     }
 
 }

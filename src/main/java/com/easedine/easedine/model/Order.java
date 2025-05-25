@@ -21,9 +21,10 @@ import java.util.List;
 public class Order {
     private  String ackId;
     @Id
-    private  String orderId;
-    private  String resId;
-    private  String userId;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int orderId;
+    private int restaurantId;
+    private int userId;
 
     private  double totalAmount;
     @Enumerated(EnumType.STRING)
@@ -51,27 +52,27 @@ public class Order {
         this.ackId = ackId;
     }
 
-    public String getOrderId() {
+    public int getOrderId() {
         return orderId;
     }
 
-    public void setOrderId(String orderId) {
+    public void setOrderId(int orderId) {
         this.orderId = orderId;
     }
 
-    public String getResId() {
-        return resId;
+    public int getRestaurantId() {
+        return restaurantId;
     }
 
-    public void setResId(String resId) {
-        this.resId = resId;
+    public void setRestaurantId(int restaurantId) {
+        this.restaurantId = restaurantId;
     }
 
-    public String getUserId() {
+    public int getUserId() {
         return userId;
     }
 
-    public void setUserId(String userId) {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 

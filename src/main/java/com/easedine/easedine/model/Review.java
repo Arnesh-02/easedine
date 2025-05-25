@@ -10,8 +10,8 @@ import java.time.LocalDateTime;
 @Entity
 public class Review {
     @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String rId;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int reviewId;
     private float starRating;
     private  String comment;
     private LocalDateTime createdAt;
@@ -26,12 +26,12 @@ public class Review {
     @JoinColumn(name = "resId",nullable = false)
     private Restaurant resId;
 
-    public String getrId() {
-        return rId;
+    public int getReviewId() {
+        return reviewId;
     }
 
-    public void setrId(String rId) {
-        this.rId = rId;
+    public void setReviewId(int reviewId) {
+        this.reviewId = reviewId;
     }
 
     public float getStarRating() {

@@ -6,12 +6,15 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Generated;
 
+import static jakarta.persistence.GenerationType.UUID;
+
 @Entity
 @Data
 @Table(name = "FoodItem")
 public class FoodItem {
     @Id
-    private String id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int foodItemId;
 
     private String name;
 
@@ -28,12 +31,12 @@ public class FoodItem {
     @JoinColumn(name = "resId")
     private Restaurant restaurant;
 
-    public String getId() {
-        return id;
+    public int getFoodItemId() {
+        return foodItemId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setFoodItemId(int foodItemId) {
+        this.foodItemId = foodItemId;
     }
 
     public Restaurant getRestaurant() {

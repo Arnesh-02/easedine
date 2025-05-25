@@ -36,9 +36,7 @@ public class FoodService {
             Restaurant res=restaurant.get();
             Map uploadRes=cloud.uploader().upload(dto.getImage().getBytes(),ObjectUtils.emptyMap());
             String url=uploadRes.toString();
-
             FoodItem food=new FoodItem();
-            food.setId(UUID.randomUUID().toString());
             food.setName(dto.getName());
             food.setCategory(dto.getCategory());
             food.setDescription(dto.getDescription());
@@ -46,7 +44,6 @@ public class FoodService {
             food.setPrice(dto.getPrice());
             food.setImgUrl(url);
             food.setStarRating(0.0f);
-
             FoodItem saved=foodRepo.save(food);
             return toResponseDto(saved);
         }
@@ -57,7 +54,7 @@ public class FoodService {
 
     private FoodResponseDTO toResponseDto(FoodItem item) {
         FoodResponseDTO dto = new FoodResponseDTO();
-        dto.setId(item.getId());
+        dto.setFoodItemId(item.getFoodItemId());
         dto.setName(item.getName());
         dto.setDescription(item.getDescription());
         dto.setPrice(item.getPrice());
@@ -68,10 +65,9 @@ public class FoodService {
         return dto;
     }
 
-    public FoodResponseDTO getFoodItemById(String id) {
+    public FoodResponseDTO getFoodItemById(int id) {
         Optional<FoodItem> foodItem=foodRepo.findById(id);
         if(foodItem.isPresent()){
-//            FoodItem food=foodItem.get();
             return  toResponseDto(foodItem.get());
         }
         else{
@@ -89,8 +85,8 @@ public class FoodService {
         return foodResponseList;
     }
 
-    public List<FoodResponseDTO> getFoodItemsByRestaurant(String resId) {
-        List<FoodItem> foodItems = foodRepo.findByRestaurant_ResId(resId);
+    public List<FoodResponseDTO> getFoodItemsByRestaurant(int restaurantId) {
+        List<FoodItem> foodItems = foodRepo.findByRestaurant_RestaurantId(restaurantId);
         List<FoodResponseDTO> responseList = new ArrayList<>();
 
         for (FoodItem foodItem : foodItems) {
@@ -101,7 +97,7 @@ public class FoodService {
     }
 
 
-    public ResponseEntity<String> deleteFoodItem(String foodId){
+    public ResponseEntity<String> deleteFoodItem(int foodId){
         foodRepo.deleteById(foodId);
         return ResponseEntity.ok("Food Item deleted successfully");
     }

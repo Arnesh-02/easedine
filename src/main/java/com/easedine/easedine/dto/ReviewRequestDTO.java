@@ -9,8 +9,8 @@ import lombok.Setter;
 public class ReviewRequestDTO {
     private int starRating;
     private String comment;
-    private String userId;
-    private String resId;
+    private int userId;
+    private int restaurantId;
 
 
     public int getStarRating() {
@@ -29,19 +29,19 @@ public class ReviewRequestDTO {
         this.comment = comment;
     }
 
-    public String getUserId() {
+    public int getUserId() {
         return userId;
     }
 
-    public void setUserId(String userId) {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 
-    public String getResId() {
-        return resId;
+    public int getRestaurantId() {
+        return restaurantId;
     }
 
-    public void setResId(String resId) {
-        this.resId = resId;
+    public void setRestaurantId(int restaurantId) {
+        this.restaurantId = restaurantId;
     }
 }

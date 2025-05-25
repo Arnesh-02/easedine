@@ -8,9 +8,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 
-public interface ReviewRepo extends JpaRepository<Review,String> {
-    List<Review> findByUserId(User userId);
+public interface ReviewRepo extends JpaRepository<Review, Integer> {
+    List<Review> findByUserId(int userId);
 
-    List<Review> findByResId(Restaurant restaurantId);
+    List<Review> findByResId(int restaurantId);
 
 }

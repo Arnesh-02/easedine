@@ -9,26 +9,26 @@ import java.util.List;
 @Data
 public class OrderRequestDTO {
 
-    private String cusId;
-    private String resId;
+    private int userId;
+    private int restaurantId;
     private String deliveryAddress;
     private PaymentMethod paymentMethod;
     private List<OrderItemDTO> items;
 
-    public String getCusId() {
-        return cusId;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setCusId(String cusId) {
-        this.cusId = cusId;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
-    public String getResId() {
-        return resId;
+    public int getRestaurantId() {
+        return restaurantId;
     }
 
-    public void setResId(String resId) {
-        this.resId = resId;
+    public void setRestaurantId(int restaurantId) {
+        this.restaurantId = restaurantId;
     }
 
     public String getDeliveryAddress() {

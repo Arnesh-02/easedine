@@ -12,8 +12,8 @@ import lombok.*;
 public class OrderedItem {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private  long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int orderedItemId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "orderId")
@@ -24,12 +24,12 @@ public class OrderedItem {
     private int quantity;
     private String itemId;
 
-    public long getId() {
-        return id;
+    public int getOrderedItemId() {
+        return orderedItemId;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setOrderedItemId(int orderedItemId) {
+        this.orderedItemId = orderedItemId;
     }
 
     public Order getOrder() {

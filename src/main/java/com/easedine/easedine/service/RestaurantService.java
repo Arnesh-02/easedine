@@ -21,7 +21,7 @@ public class RestaurantService {
         return "Restaurant added successfully";
     }
 
-    public Restaurant getResById(String id) {
+    public Restaurant getResById(int id) {
         Optional<Restaurant> opt=resRepo.findById(id);
         if(opt.isPresent()){
             return opt.get();
@@ -36,7 +36,7 @@ public class RestaurantService {
     }
 
 
-    public Restaurant updateRestaurant(String id, Restaurant updated) {
+    public Restaurant updateRestaurant(int id, Restaurant updated) {
         Optional<Restaurant> res=resRepo.findById(id);
         if(res.isPresent()){
             Restaurant updatedRes=res.get();
@@ -55,7 +55,7 @@ public class RestaurantService {
         }
     }
 
-    public String deleteRestaurant(String id) {
+    public String deleteRestaurant(int id) {
         Optional<Restaurant> res=resRepo.findById(id);
         if(res.isPresent()){
             resRepo.deleteById(id);

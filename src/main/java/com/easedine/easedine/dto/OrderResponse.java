@@ -16,10 +16,10 @@ import java.util.List;
 @AllArgsConstructor
 @Builder
 public class OrderResponse {
-    private String orderId;
+    private int orderId;
     private String ackId;
-    private String restaurantId;
-    private String userId;
+    private int restaurantId;
+    private int userId;
     private double deliveryFee;
     private double totalAmount;
     private PaymentMethod paymentMethod;
@@ -29,11 +29,11 @@ public class OrderResponse {
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
 
-    public String getOrderId() {
+    public int getOrderId() {
         return orderId;
     }
 
-    public void setOrderId(String orderId) {
+    public void setOrderId(int orderId) {
         this.orderId = orderId;
     }
 
@@ -45,19 +45,19 @@ public class OrderResponse {
         this.ackId = ackId;
     }
 
-    public String getRestaurantId() {
+    public int getRestaurantId() {
         return restaurantId;
     }
 
-    public void setRestaurantId(String restaurantId) {
+    public void setRestaurantId(int restaurantId) {
         this.restaurantId = restaurantId;
     }
 
-    public String getUserId() {
+    public int getUserId() {
         return userId;
     }
 
-    public void setUserId(String userId) {
+    public void setUserId(int userId) {
         this.userId = userId;
     }
 

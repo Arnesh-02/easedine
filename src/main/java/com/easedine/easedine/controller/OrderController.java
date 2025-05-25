@@ -26,7 +26,7 @@ public class OrderController {
     }
 
     @GetMapping("/{userId}")
-    public List<OrderResponse> getOrderById(@PathVariable String userId) throws UserNotFoundException {
+    public List<OrderResponse> getOrderById(@PathVariable int userId) throws UserNotFoundException {
         return orderService.getOrdersByCustomerId(userId);
     }
 

@@ -4,18 +4,18 @@ import lombok.Data;
 
 @Data
 public class OrderItemResponseDTO {
-    private String itemId;
+    private int foodItemId;
     private String name;
     private int quantity;
     private double price;
     private String specialInstructions;
 
-    public String getItemId() {
-        return itemId;
+    public int getFoodItemId() {
+        return foodItemId;
     }
 
-    public void setItemId(String itemId) {
-        this.itemId = itemId;
+    public void setFoodItemId(int foodItemId) {
+        this.foodItemId = foodItemId;
     }
 
     public String getName() {

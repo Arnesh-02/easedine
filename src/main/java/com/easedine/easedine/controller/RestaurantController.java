@@ -17,7 +17,7 @@ public class RestaurantController {
     RestaurantService resServ;
 
     @GetMapping("/{id}")
-    public  Restaurant getResById(@PathVariable String id){
+    public  Restaurant getResById(@PathVariable int id){
         return resServ.getResById(id);
     }
 
@@ -28,12 +28,12 @@ public class RestaurantController {
 
 
     @PutMapping("/update/{id}")
-    public Restaurant updateRestaurant(@PathVariable String id, @RequestBody Restaurant restaurant) {
+    public Restaurant updateRestaurant(@PathVariable int id, @RequestBody Restaurant restaurant) {
         return resServ.updateRestaurant(id, restaurant);
     }
 
     @DeleteMapping("/delete/{id}")
-    public String deleteRestaurant(@PathVariable String id) {
+    public String deleteRestaurant(@PathVariable int id) {
         return resServ.deleteRestaurant(id);
     }
 

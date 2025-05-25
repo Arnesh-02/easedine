@@ -14,7 +14,6 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 @Service
 public class ReviewService {
@@ -31,11 +30,10 @@ public class ReviewService {
 
     public String addReview(ReviewRequestDTO dto) {
         Optional<User> user= urepo.findById(dto.getUserId());
-        Optional<Restaurant> restaurant = resRepo.findById(dto.getResId());
+        Optional<Restaurant> restaurant = resRepo.findById(dto.getRestaurantId());
         if(user.isPresent()){
                 if(restaurant.isPresent()){
                     Review review = new Review();
-                    review.setrId(UUID.randomUUID().toString());
                     review.setStarRating(dto.getStarRating());
                     review.setComment(dto.getComment());
                     review.setCreatedAt(LocalDateTime.now());
@@ -51,13 +49,12 @@ public class ReviewService {
         else{
             throw new RuntimeException("User not found");
         }
-
     }
-        public String deleteReview(String reviewId, String userId) {
+    public String deleteReview(int reviewId, int userId) {
         Optional<Review> optionalReview = revRepo.findById(reviewId);
         if (optionalReview.isPresent()) {
             Review review = optionalReview.get();
-            if (review.getUserId().getUserId().equals(userId))
+            if (review.getUserId().getUserId() == userId)
             {
                 revRepo.deleteById(reviewId);
                 return "Review deleted successfully";
@@ -68,14 +65,10 @@ public class ReviewService {
             return "Review not found";
         }
     }
-
-    public List<Review> getReviewsByRestaurantId(String restaurantId) {
-        Restaurant restaurant = resRepo.findById(restaurantId).orElseThrow(() -> new RuntimeException("Restaurant not found"));
-        return revRepo.findByResId(restaurant);
+    public List<Review> getReviewsByRestaurantId(int restaurantId) {
+        return revRepo.findByResId(restaurantId);
     }
-
-    public List<Review> getReviewsByUserId(String userId) {
-        User user = urepo.findById(userId).orElseThrow(() -> new RuntimeException("Customer not found"));
-        return revRepo.findByUserId(user);
+    public List<Review> getReviewsByUserId(int userId) {
+        return revRepo.findByUserId(userId);
     }
 }

@@ -39,8 +39,8 @@ public class OrderService {
         Order order = new Order();
         order.setOrderId(UUID.randomUUID().toString());
         order.setAckId(generateAckId());
-        order.setUserId(dto.getCusId());
-        order.setResId(dto.getResId());
+        order.setUserId(dto.getUserId());
+        order.setRestaurantId(dto.getRestaurantId());
         order.setDeliveryAddress(dto.getDeliveryAddress());
         order.setPaymentMethod(dto.getPaymentMethod());
         order.setOrderStatus(OrderStatus.ORDER_PLACED);
@@ -48,11 +48,11 @@ public class OrderService {
 
 
         List<OrderedItem> orderedItems = dto.getItems().stream().map(itemDto -> {
-            FoodItem temp = foodItemRepo.getById(itemDto.getItemId());
+            FoodItem temp = foodItemRepo.getById(itemDto.getFoodItemId());
             String name = temp.getName();
             double price = temp.getPrice();
             OrderedItem item = new OrderedItem();
-            item.setItemId(itemDto.getItemId());
+            item.setItemId(itemDto.getFoodItemId());
             item.setName(name);
             item.setQuantity(itemDto.getQuantity());
             item.setPrice(price);
@@ -82,7 +82,7 @@ public class OrderService {
         return mapToOrderResponse(temp);
     }
 
-    public List<OrderResponse> getOrdersByCustomerId(String userId) throws UserNotFoundException {
+    public List<OrderResponse> getOrdersByCustomerId(int userId) throws UserNotFoundException {
         User user = userRepo.findById(userId).orElse(null);
         if (user == null) {
             throw new UserNotFoundException("User is not available");
@@ -115,7 +115,7 @@ public class OrderService {
         response.setOrderId(order.getOrderId());
         response.setAckId(order.getAckId());
         response.setUserId(order.getUserId());
-        response.setRestaurantId(order.getResId());
+        response.setRestaurantId(order.getRestaurantId());
         response.setDeliveryFee(0); // You can calculate or customize later
         response.setTotalAmount(order.getTotalAmount());
         response.setPaymentMethod(order.getPaymentMethod());

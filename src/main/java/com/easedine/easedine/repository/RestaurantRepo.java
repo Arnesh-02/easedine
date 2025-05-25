@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface RestaurantRepo extends JpaRepository<Restaurant,String> {
+public interface RestaurantRepo extends JpaRepository<Restaurant, Integer> {
     boolean existsByEmail(String email);
 
     Optional<Restaurant> findByEmail(String email);

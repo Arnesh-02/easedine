@@ -22,16 +22,16 @@ public class ReviewController {
     }
 
     @GetMapping("/restaurant/{restaurantId}")
-    public List<Review> getReviewsByRestaurant(@PathVariable String restaurantId) {
+    public List<Review> getReviewsByRestaurant(@PathVariable int restaurantId) {
         return rs.getReviewsByRestaurantId(restaurantId);
     }
     @GetMapping("/user/{userId}")
-    public List<Review> getReviewsByUser(@PathVariable String userId) {
+    public List<Review> getReviewsByUser(@PathVariable int userId) {
         return rs.getReviewsByUserId(userId);
     }
 
     @DeleteMapping("/{reviewId}/user/{userId}")
-    public String deleteReview(@PathVariable String reviewId, @PathVariable String userId) {
+    public String deleteReview(@PathVariable int reviewId, @PathVariable int userId) {
         return rs.deleteReview(reviewId, userId);
     }
 

@@ -14,7 +14,7 @@ public class UserService {
     UserRepo urepo;
 
 
-    public User displayUser(String id) {
+    public User displayUser(int id) {
         Optional<User> userOpt = urepo.findById(id);
         if (userOpt.isPresent()) {
             return userOpt.get();
@@ -23,7 +23,7 @@ public class UserService {
         }
     }
 
-    public String deleteUser(String id) {
+    public String deleteUser(int id) {
         if (urepo.existsById(id)) {
             urepo.deleteById(id);
             return "User Deleted Successfully";
@@ -44,7 +44,7 @@ public class UserService {
         }
     }
 
-    public User updateProfile(String id, User updatedUser) {
+    public User updateProfile(int id, User updatedUser) {
         Optional<User> userOpt = urepo.findById(id);
         if (userOpt.isPresent()) {
             User user = userOpt.get();
