@@ -11,6 +11,6 @@ import java.io.IOException;
 public class HomeController {
     @GetMapping("/")
     public  void redirect(HttpServletResponse response) throws IOException {
-        response.sendRedirect( "swagger-ui.html");
+        response.sendRedirect( "localhost:"); // /undex.html
     }
 }
