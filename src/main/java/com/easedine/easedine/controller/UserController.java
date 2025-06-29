@@ -1,6 +1,6 @@
 package com.easedine.easedine.controller;
 
-import com.easedine.easedine.auth.AuthService;
+
 import com.easedine.easedine.exceptions.UserNameNotFoundException;
 import com.easedine.easedine.model.User;
 import com.easedine.easedine.service.UserService;
