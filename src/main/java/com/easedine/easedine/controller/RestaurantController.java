@@ -1,16 +1,21 @@
 package com.easedine.easedine.controller;
 
 
+import com.easedine.easedine.dto.RestaurantRegisterRequestDTO;
+import com.easedine.easedine.exceptions.SomethingWenWrongException;
 import com.easedine.easedine.model.Restaurant;
 import com.easedine.easedine.service.RestaurantService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 @RestController
 @RequestMapping("/restaurant")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin("*")
 public class RestaurantController {
 
 
@@ -38,10 +43,13 @@ public class RestaurantController {
         return resServ.deleteRestaurant(id);
     }
 
-    @PostMapping("/register")
-    public String registerRes(@RequestBody Restaurant restaurant){
+    @PostMapping(value = "/register")
+    public String registerRes(@RequestPart("restaurant") RestaurantRegisterRequestDTO restaurant, @RequestPart("profile_image") MultipartFile profileImage
+    ) throws IOException, SomethingWenWrongException {
+        restaurant.setProfile_image(profileImage);  // set the image in DTO
         return resServ.addRestaurant(restaurant);
     }
+
 
     @PostMapping("/login")
     public  Restaurant loginRes(@RequestParam String email,@RequestParam  String password){

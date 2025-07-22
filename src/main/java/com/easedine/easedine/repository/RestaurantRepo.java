@@ -1,6 +1,7 @@
 package com.easedine.easedine.repository;
 
 
+import com.easedine.easedine.dto.RestaurantRegisterRequestDTO;
 import com.easedine.easedine.model.Restaurant;
 import com.easedine.easedine.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;

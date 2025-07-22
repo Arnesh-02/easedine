@@ -16,6 +16,7 @@ import java.util.*;
 @NoArgsConstructor
 public class Restaurant {
     @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     private String resId;
 
     private String rname;
@@ -24,6 +25,15 @@ public class Restaurant {
     private String pno;
     private String category;
     private double starRating;
+    private String image_url;
+
+    public String getImage_url() {
+        return image_url;
+    }
+
+    public void setImage_url(String image_url) {
+        this.image_url = image_url;
+    }
 
     @ElementCollection
     private List<String> cuisines;

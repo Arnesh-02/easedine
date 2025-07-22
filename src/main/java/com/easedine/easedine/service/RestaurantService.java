@@ -1,24 +1,56 @@
 package com.easedine.easedine.service;
 
 
+import com.cloudinary.Cloudinary;
+import com.cloudinary.utils.ObjectUtils;
+import com.easedine.easedine.dto.RestaurantRegisterRequestDTO;
+import com.easedine.easedine.exceptions.SomethingWenWrongException;
 import com.easedine.easedine.model.Restaurant;
 import com.easedine.easedine.repository.RestaurantRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class RestaurantService {
+
+    @Autowired
+    Cloudinary cloud;
 
 
     @Autowired
     RestaurantRepo resRepo;
 
-    public String addRestaurant(Restaurant res) {
-        resRepo.save(res);
+    public String addRestaurant(RestaurantRegisterRequestDTO res) throws SomethingWenWrongException {
+        resRepo.save(toRestaurantObj(res));
         return "Restaurant added successfully";
+    }
+
+    private Restaurant toRestaurantObj(RestaurantRegisterRequestDTO res) throws SomethingWenWrongException {
+        try {
+            Restaurant restaurant = new Restaurant();
+//            restaurant.setResId(UUID.randomUUID().toString());
+            restaurant.setRname(res.getRname());
+            restaurant.setCategory(res.getCategory());
+            restaurant.setAddress(res.getAddress());
+            restaurant.setDescription(res.getDescription());
+            restaurant.setOpeningHours(res.getOpeningHours());
+            restaurant.setAddress(res.getAddress());
+            Map uploadRes = cloud.uploader().upload(res.getProfile_image().getBytes(), ObjectUtils.emptyMap());
+            String url = uploadRes.get("url").toString();
+            restaurant.setImage_url(url);
+            restaurant.setPno(res.getPno());
+            restaurant.setEmail(res.getEmail());
+            restaurant.setPassword(res.getPassword());
+            return restaurant;
+        } catch (Exception e) {
+            throw new SomethingWenWrongException(e.getMessage().toString());
+        }
     }
 
     public Restaurant getResById(String id) {
